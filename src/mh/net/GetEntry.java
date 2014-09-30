@@ -1,6 +1,7 @@
 package mh.net;
 
 import qgb.interfaces.StopTask;
+import mh.gui.MainFrame;
 import mh.struct.entry.Entry;
 /**@see qgb.interfaces.StopTask**/
 public interface GetEntry extends StopTask{

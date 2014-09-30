@@ -13,9 +13,9 @@ import mh.struct.entry.Entry;
 import qgb.interfaces.QRunable;
 
 public abstract class AbstractGetEntry implements GetEntry {
-	int giRetry = 1;
-	ResultsPanel gRP;
-	FindPanel gFP;
+	protected int giRetry = 1;
+	protected ResultsPanel gRP;
+	protected FindPanel gFP;
 	public AbstractGetEntry(ResultsPanel aRP ,FindPanel aFP) {
 		this(3,aRP, aFP);
 	}
@@ -34,10 +34,10 @@ public abstract class AbstractGetEntry implements GetEntry {
 	
 
 	//不可多次改变 gbXXX 的值
-	private boolean gbNotStop=true,gbIsDone=false;
+	protected volatile boolean gbNotStop=true,gbIsDone=false;
 	/**throws SocketTimeoutException, IllegalArgumentException, 
 	 * MalformedURLException, IOException **/
-	ArrayList<QRunable> gqruns=new ArrayList<QRunable>();
+	private ArrayList<QRunable> gqruns=new ArrayList<QRunable>();
 	@Override
 	public void stop(){
 		gbNotStop=false;
@@ -51,14 +51,14 @@ public abstract class AbstractGetEntry implements GetEntry {
 	public boolean isDone() {return gbIsDone;}
 	
 	/**Senten voice**/
-	private void getVoice(Voice av,int aindex) {
+	protected void getVoice(Voice av,int aindex) {
 		GetSentenV getV=new GetSentenV(av,gRP, aindex);
 		gqruns.add(getV);
 		Thread tpv=new Thread(getV);
 		tpv.start();
 	}
 	/**Phon voice**/
-	private void getVoice(Voice av,C ac) {
+	protected void getVoice(Voice av,C ac) {
 		GetPhonV getV=new GetPhonV(av,gRP, ac);
 		gqruns.add(getV);
 		Thread tpv=new Thread(getV);

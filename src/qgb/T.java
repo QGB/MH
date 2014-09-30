@@ -31,8 +31,7 @@ import qgb.text.QText;
 import test.swing.component.JTextArea2;
 /**QGB's java basic method**/
 public final class T {
-	public static String cst = "T";
-	public static String cst_test_path = "D:/test/";
+	public final static String gstTestPath = "D:/test/";
 	/****/
 	private T() {throw new Error("Don't let anyone instantiate this class!");}
 	// /////////////////////////////////////////////////////////
@@ -296,7 +295,7 @@ public final class T {
 	// ///////////////////////////////////////////////////
 
 	/**
-	 * writes ast_text to (cst_test_path +ast_filename)
+	 * writes ast_text to (gstTestPath +ast_filename)
 	 * 
 	 * @see java.io.FileWriter
 	 * @see qgb.T.autoPath
@@ -312,7 +311,7 @@ public final class T {
 
 			e.printStackTrace();
 		}
-		// print(cst + "|" + cst_test_path + ast_filename);
+		// print(cst + "|" + gstTestPath + ast_filename);
 	}
 
 	/**如果ast_filename以 .开头，则为当前路径
@@ -327,14 +326,14 @@ public final class T {
 			make_dirs(ast_filename);
 			return ast_filename;
 		} else {
-			make_dirs(cst_test_path + ast_filename);
-			return (cst_test_path + ast_filename);
+			make_dirs(gstTestPath + ast_filename);
+			return (gstTestPath + ast_filename);
 		}
 	}
 
 	/**
 	 * Encodes this {@code String} into a sequence of bytes using the named
-	 * charset, storing the result into (cst_test_path +ast_filename).
+	 * charset, storing the result into (gstTestPath +ast_filename).
 	 * 
 	 * @param ast_filename
 	 *            .
@@ -372,7 +371,7 @@ public final class T {
 					new FileOutputStream(sFileName));
 			while (abis.read(data) != -1) {
 				bos.write(data);
-				// T.notify("T.write(" + cst_test_path + ast_filename
+				// T.notify("T.write(" + gstTestPath + ast_filename
 				// + ",InputStream)");
 			}
 
