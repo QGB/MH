@@ -16,6 +16,7 @@ import net.miginfocom.swing.MigLayout;
 import qgb.T;
 import qgb.swing.QST;
 import test.swing.component.JTextArea2;
+import mh.gui.MainFrame;
 import mh.gui.R;
 import mh.struct.Voice;
 import mh.struct.entry.Translations;
@@ -43,10 +44,18 @@ public class TransPanel extends JScrollPane {
 	/**不要求 在 EDT中调用**/
 	public void showTrans(final Translations ats){
 		gtxtArea.setText(ats.toString());
+		//TODO: 不能完美显示滚动条
+		
+//		T.print(gtxtArea.getPreferredSize());[width=475,height=155]
+//		gtxtArea.setPreferredSize(new Dimension(1, 1));
 		QST.refreshAll(this);
 	}
 	/************Test Code**********************/
 	public static void main(String[] args) {
+		MainFrame.main(null);
+		if (true) {
+			return;
+		}
 		EventQueue.invokeLater(grun);
 	}
 

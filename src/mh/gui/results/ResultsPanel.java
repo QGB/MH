@@ -112,7 +112,7 @@ public class ResultsPanel extends JPanel {
 				}
 				gFP.btnFind.setEnabled(true);
 				if(e!=null)gPP.showMsg("["+e.word.stW.get()+"] done!");
-				else stop();
+				//else if() stop();
 			}
 		};
 		Thread t=new Thread(run);

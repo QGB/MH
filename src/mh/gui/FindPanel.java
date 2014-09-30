@@ -115,22 +115,7 @@ public class FindPanel extends JPanel {
 		ActionListener actionFind = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String stW=CBInput.getEditor().getItem().toString().trim();
-//				if (stW.length()>0) {throw new IllegalArgumentException("qgb!");}
-//				else {T.argsError(e);}
-//				T.print("s=%s,id=%s,c=%s\ntos=%s","",e.getID(),e.getActionCommand(),e.toString());
-//				if (true) {return;}
-				btnFind.setEnabled(false);
-				//String stW=CBInput.getEditor().getItem().toString().trim();
-				CBInput.getEditor().setItem(stW);
-				//Word w=new Word(CBInput.getEditor().getItem().toString());
-				//w.stW.set(CBInput.getEditor().getItem().toString());
-				//gRP.gwp.showWord(w);
-				
-				gRP.showResults(stW);
-				
-				CBInput.getEditor().selectAll();
-				CBInput.requestFocus();
+				find();
 			}
 		};
 		KeyListener keyEnter=new KeyListener() {
@@ -139,10 +124,7 @@ public class FindPanel extends JPanel {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-					T.print("Enter Typed!");
-					ActionEvent findEvent=new ActionEvent(btnFind, 1001, "");
-					EventQueue eq=new EventQueue();
-					//eq.postEvent(theEvent);
+					find();
 				}
 			}
 			@Override
@@ -154,6 +136,25 @@ public class FindPanel extends JPanel {
 		btnBack.addActionListener(actionBack);
 		btnForward.addActionListener(actionForward);
 		btnFind.addActionListener(actionFind);
+	}
+
+	protected void find() {
+		String stW=CBInput.getEditor().getItem().toString().trim();
+//		if (stW.length()>0) {throw new IllegalArgumentException("qgb!");}
+//		else {T.argsError(e);}
+//		T.print("s=%s,id=%s,c=%s\ntos=%s","",e.getID(),e.getActionCommand(),e.toString());
+//		if (true) {return;}
+		btnFind.setEnabled(false);
+		//String stW=CBInput.getEditor().getItem().toString().trim();
+		CBInput.getEditor().setItem(stW);
+		//Word w=new Word(CBInput.getEditor().getItem().toString());
+		//w.stW.set(CBInput.getEditor().getItem().toString());
+		//gRP.gwp.showWord(w);
+		
+		gRP.showResults(stW);
+		
+		CBInput.getEditor().selectAll();
+		CBInput.requestFocus();		
 	}
 
 	private void CreateComponents() {

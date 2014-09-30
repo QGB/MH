@@ -176,6 +176,7 @@ public class KingSoft implements GetEntry{
 					.toLowerCase());
 			s.v.stM.set(stUrl);
 			e.sentces.add(s);
+			
 			gRP.gSsP.addSenten(s);
 			getVoice(s.v,e.sentces.size()-1);
 		}
