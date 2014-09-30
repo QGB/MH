@@ -21,15 +21,18 @@ import mh.struct.entry.Entry;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.ConstraintParser;
 import net.miginfocom.swing.MigLayout;
-import qgb.T;;
+import qgb.T;
+import qgb.interfaces.StopTask;
 
-public class ResultsPanel extends JPanel {
+public class ResultsPanel extends JPanel implements StopTask {
 	private final static ProgressPanel gspp = new ProgressPanel(9);
 	private final static ResultsPanel gsrp = new ResultsPanel(gspp);// new
 																	// ProgressPanel(5)
+
 	public static void main(String[] args) {
 		MainFrame.main(null);
-		if (true) return;
+		if (true)
+			return;
 		EventQueue.invokeLater(grun);
 	}
 
@@ -45,43 +48,46 @@ public class ResultsPanel extends JPanel {
 				f.setLocation(411, 73);
 				f.setVisible(true);
 				f.getContentPane().setBackground(Color.BLACK);
-//				QST.setAllBackground(gsrp.gSsP, Color.BLUE);
-//				QST.setAllBackground(gsrp.gTP, Color.RED);
+				// QST.setAllBackground(gsrp.gSsP, Color.BLUE);
+				// QST.setAllBackground(gsrp.gTP, Color.RED);
 				gsrp.setBackground(Color.GREEN);
-				//QST.setAllForeground(gsrp, Color.GREEN);
+				// QST.setAllForeground(gsrp, Color.GREEN);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	};
-/*******************Test End***************************************************/
+	/******************* Test End ***************************************************/
 	ArrayList<JPanel> galPanels = new ArrayList<JPanel>();
 	public String gsC_migl = "growx,growy,wrap";
 	public ProgressPanel gPP;
 	public FindPanel gFP;
-	public WordPanel gWP=new WordPanel();
-	public SentencesPanel gSsP=new SentencesPanel();
-	public TransPanel gTP=new TransPanel();
+	public WordPanel gWP = new WordPanel();
+	public SentencesPanel gSsP = new SentencesPanel();
+	public TransPanel gTP = new TransPanel();
 	private GetEntry gkSoft;
-	private StrNotNull gstMsg=new StrNotNull();
+	private StrNotNull gstMsg = new StrNotNull();
+
 	public ResultsPanel(ProgressPanel app) {
-//		super(new MigLayout(R.MigL.sL_noBorder,,
-//				"[]0[grow]0[grow]"));
-		super(new MigLayout(ConstraintParser.parseLayoutConstraint(R.MigL.sL_noBorder),
-				ConstraintParser.parseColumnConstraints("[grow]"),//AC colConstraints
-				getRowAC()//AC rowConstraints
+		// super(new MigLayout(R.MigL.sL_noBorder,,
+		// "[]0[grow]0[grow]"));
+		super(new MigLayout(
+				ConstraintParser.parseLayoutConstraint(R.MigL.sL_noBorder),
+				ConstraintParser.parseColumnConstraints("[grow]"),// AC
+																	// colConstraints
+				getRowAC()// AC rowConstraints
 				));
 		gPP = app;
-		gkSoft = new KingSoft(this,gFP);
+		gkSoft = new KingSoft(this, gFP);
 
-		add(gWP,gWP.gsC_migl);
-		add(gTP,gTP.gsC_migl);
-		add(gSsP,gSsP.gsC_migl);
+		add(gWP, gWP.gsC_migl);
+		add(gTP, gTP.gsC_migl);
+		add(gSsP, gSsP.gsC_migl);
 	}
 
 	private static AC getRowAC() {
-		AC ac=ConstraintParser.parseRowConstraints("[]0[]0[]").grow(5,1);
-		ac=ac.grow(15,2);
+		AC ac = ConstraintParser.parseRowConstraints("[]0[]0[]").grow(5, 1);
+		ac = ac.grow(15, 2);
 		return ac;
 	}
 
@@ -92,54 +98,74 @@ public class ResultsPanel extends JPanel {
 
 	}
 
-//	public void showWord(Word aword) {
-//		gWP.showWord(aword);
-//	}
+	// public void showWord(Word aword) {
+	// gWP.showWord(aword);
+	// }
 
 	public void showResults(final String astWord) {
 		stop();
-		Runnable run=new Runnable() {
+		gbNotStop = true;
+		gbIsDone = false;
+		Runnable run = new Runnable() {
 			public void run() {
-				Entry e=gkSoft.byWord(astWord);
-				int ic=0;
-				while (gSsP.isDone()==false&&gkSoft.isStop()==false) {
-					T.sleep(500);
-					ic++;
-					if(ic>33){
-						//stop();
+				Entry e = gkSoft.byWord(astWord);
+				int ic = 0;
+				while (gSsP.isDone() == false && gkSoft.isStop() == false) {
+					if (isStop() || ic > 33) {
 						break;
 					}
+					T.sleep(500);
+					ic++;
+				}
+
+				if (e != null && isStop() == false) {
+					gPP.showMsg("[" + e.word.stW.get() + "] done!");
+					gbIsDone = true;
 				}
 				gFP.btnFind.setEnabled(true);
-				if(e!=null)gPP.showMsg("["+e.word.stW.get()+"] done!");
-				//else if() stop();
+				// else if() stop();
 			}
 		};
-		Thread t=new Thread(run);
+		Thread t = new Thread(run);
 		t.start();
-		
 	}
 
 	public void showMsg(final String ast) {
 		stop();
 		gstMsg.set(ast);
-		gPP.showMsg(gstMsg+" "+T.getCurrentTime());
+		gPP.showMsg(gstMsg + " " + T.getCurrentTime());
 	}
+
+	// 请谨慎使用 gbXXX 的值
+	protected volatile boolean gbNotStop = true, gbIsDone = false;
+
+	@Override
 	public void stop() {
 		gkSoft.stop();
-		//this.setVisible(false);
+		// this.setVisible(false);
 		gPP.reset();
 		gWP.removeAll();
 		gTP.removeAll();
 		gSsP.removeAll();
 		gFP.btnFind.setEnabled(true);
+		gbNotStop = false;
+	}
+
+	@Override
+	public boolean isStop() {
+		return !gbNotStop;
+	}
+
+	@Override
+	public boolean isDone() {
+		return gbIsDone;
 	}
 
 	public void setPanel(FindPanel aFP) {
-		if (aFP==null) {
+		if (aFP == null) {
 			T.argsError(aFP);
 		}
-		gFP=aFP;
+		gFP = aFP;
 	}
-	
+
 }

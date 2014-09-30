@@ -1,6 +1,6 @@
 package qgb.interfaces;
 
-/**	//不可多次改变 gbXXX 的值</br>
+/**	//请谨慎使用 gbXXX 的值</br>
 	protected volatile boolean gbNotStop=true,gbIsDone=false;
  	@Override public void stop(){gbNotStop=false;}
 	@Override public boolean isStop() {return !gbNotStop;}
