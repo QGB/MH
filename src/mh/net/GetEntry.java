@@ -1,9 +1,9 @@
 package mh.net;
 
-import qgb.interfaces.QRunable;
+import qgb.interfaces.StopTask;
 import mh.struct.entry.Entry;
-
-public interface GetEntry extends QRunable{
+/**@see qgb.interfaces.StopTask**/
+public interface GetEntry extends StopTask{
 	Entry byWord(String ast);// throws IOException, IllegalArgumentException;
 	//Word getWord();
 }

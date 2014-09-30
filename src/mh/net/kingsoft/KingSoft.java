@@ -64,13 +64,21 @@ public class KingSoft implements GetEntry{
 		//gpPanel = aPPanel;
 	}
 	
-	private boolean gbNotStop=true;
+
+	//不可多次改变 gbXXX 的值
+	private boolean gbNotStop=true,gbIsDone=false;
+
+	@Override
 	public void stop(){
 		gbNotStop=false;
 		for(QRunable run:gqruns){
 			run.stop();
 		}
 	}
+	@Override
+	public boolean isStop() {return !gbNotStop;}
+	@Override
+	public boolean isDone() {return gbIsDone;}
 	/**throws SocketTimeoutException, IllegalArgumentException, 
 	 * MalformedURLException, IOException **/
 	ArrayList<QRunable> gqruns=new ArrayList<QRunable>();
@@ -203,23 +211,5 @@ public class KingSoft implements GetEntry{
 	public static void main(String[] args) {
 		MainFrame.main(null);
 	}
-
-	@Override
-	public boolean isStop() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isDone() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void run() {
-		
-	}
-
 
 }

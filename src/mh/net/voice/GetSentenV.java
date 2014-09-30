@@ -56,19 +56,10 @@ public class GetSentenV implements QRunable{
 	}
 	
 	private boolean gbNotStop=true;
-	@Override
-	public void stop(){
-		gbNotStop=false;
-	}
-	@Override
-	public boolean isStop() {
-		return !gbNotStop;
-	}
+	public void stop(){gbNotStop=false;}
+	public boolean isStop() {return !gbNotStop;}
 	private boolean gbIsDone=false;
-	@Override
-	public boolean isDone() {
-		return gbIsDone;
-	}
+	public boolean isDone() {return gbIsDone;}
 	
 	public static void main(String[] args) {
 		MainFrame.main(null);
