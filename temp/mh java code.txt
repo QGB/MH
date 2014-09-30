@@ -1,0 +1,17 @@
+		
+		BoxLayout bl_y=new BoxLayout(this, BoxLayout.Y_AXIS);
+		setLayout(bl_y);
+		
+		
+		BoxLayout bl_y1x=new BoxLayout(this, BoxLayout.X_AXIS);
+		JPanel jp_y1=new JPanel();
+		jp_y1.setLayout(bl_y1x);
+		txtInput=new JTextField();
+		txtInput.setBounds(0, 0, 300, QField.I_TXT_HEIGHT);
+		jp_y1.add(txtInput);
+		
+		add(jp_y1);
+
+ catch (FailingHttpStatusCodeException e) {
+			T.error(e, Get.class+" ÍøÂç´íÎó");
+		} 

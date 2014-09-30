@@ -1,0 +1,23 @@
+	/**@deprecated	
+	 * 因为可以通过ast_filename判断是否是测试路径。
+	 * @see qgb.T.autoPath;
+	 * modified at 2014-09-24 12:45:12**/
+	public static void write(String ast_filename, String ast_text) {
+		FileWriter fw;
+		try {
+			qgb.T.autoPath(ast_filename)
+//			if (abool_test) {
+//				fw = new FileWriter(ast_fileast_filename);
+//			} else {
+			fw = new FileWriter(autoPath(ast_filename));
+//			}
+			fw.write(ast_text);
+			fw.flush();
+			// tprint(ast_text);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		//print( + "|" + cst_test_path + ast_filename);
+		print(getMethodName(a));
+	}

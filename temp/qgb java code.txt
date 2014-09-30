@@ -1,0 +1,55 @@
+    	//String str="";
+    	//byte[] yb ={};
+        //T.write("code2.txt", "q\nw\ne\nrt\nyui\n");
+        
+        //yb=T.read_byteArray("code.txt");
+       // str=T.read_st("code.txt");
+        
+        
+        //T.print(StrToArray(str, "\r\n"));
+
+
+					//f.setSize(width, height);
+//					T.print("(%d,%d)", screenSize.width / 2 - w / 2,
+//							screenSize.height / 2 - h / 2);
+//					//f.setSize(w, h);
+					//f.setResizable(false);
+
+	private void Resize() {
+		Font font = new Font(null, 0, getHeight() / 5 - 5);
+	}
+
+	private void read(JButton ab, InputStream ais) {
+		if (ais == null) {
+			T.notify("abis==null");
+			return;
+		}
+
+		ab.setEnabled(false);
+		MP3player.play(ais);
+		ab.setEnabled(true);
+	}
+
+
+
+
+		@Override
+		public String get() {
+			return st_w;
+		}
+		@Override
+		public void set(String at) {
+			st_w=at;
+		}	
+T
+
+		//delFile("D:\\java\\eclipse\\TIJ4\\src\\access\\ChocolateChip.java");
+		//MP3player.play(read_bis(cst_test_path + "book.mp3"));
+		//String sta=repeat(7, "cmd /c start ")+"cmd /k java -h";
+		//T.print(sta);
+		//Process p= run(sta);
+//		InputStream is= p.getInputStream();
+//		String string= String.valueOf(is);
+//		T.print(string);
+//		System.out.println("bis");
+		// cin("qgb");

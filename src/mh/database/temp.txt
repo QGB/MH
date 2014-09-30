@@ -1,0 +1,53 @@
+				
+				addVoice(e.getValue().v);
+
+	public static void addVoice(Voice av) {
+		if (av == null || av.notNull()==false)
+			return;
+		try {
+			PreparedStatement prep = gConn.prepareStatement(QText.format(
+							"UPDATE %s(%s,%s) VALUES(?,?)", gsTablePhon,
+							gsCWord, gsCPhon,gsCountry));
+					prep.setString(1, ae.word.stW.get());
+					prep.setString(2, e.getValue().stP.get());
+					prep.setString(3, e.getKey().toString());
+					prep.execute();
+			gConn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+//			
+//			ResultSet rs=null;
+//			// gst.executeQuery("show tables;");
+//
+//
+////			 for (int i = 0; i <99; i++) {
+////				 T.sleep(1);
+////				 gst.executeUpdate(
+////						 "INSERT INTO History(stWord,stTime) VALUES('PX0','"+
+////				 System.currentTimeMillis()+ "')" );
+////			}
+//			//T.print(rs);
+//			rs= gst.executeQuery("Select * From History");
+//			//T.print(rs.getString(1));
+//			int i=0;
+//			while (rs.next()) {
+//				 T.print((++i)+"["+rs.getString(1)+"],["+rs.getString(2)+"]");
+//			
+//			 }
+//			 gConn.commit();
+
+		//connect();
+		
+//		for (int i = 0; i < 9; i++) {
+//			addWord("AAA");
+//		}
+//		
+//		int i=0;
+//		for(String st:getLastWord(99)){
+//			T.print("%-2d|%s",(++i),st);
+//		}
+		//dropTable();
+		//createTable();
