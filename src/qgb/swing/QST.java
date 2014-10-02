@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -16,6 +17,8 @@ import javax.swing.JComponent;
 import qgb.T;
 
 public class QST {
+
+	public static Toolkit gT=Toolkit.getDefaultToolkit();
 
 	public static void main(String[] args) {
 

@@ -4,6 +4,7 @@ import static mh.database.MDT.gStat;
 import static mh.database.MDT.gsCTime;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import qgb.T;
+import qgb.swing.QST;
 import qgb.text.QText;
 import mh.struct.Sentences;
 import mh.struct.Voice;
@@ -24,15 +26,40 @@ import mh.struct.entry.Phons;
 import mh.struct.entry.Senten;
 
 /**
- * import static mh.database.MDT.*;</br> import static
- * mh.database.MDT.gConn;</br> import static mh.database.MDT.gStat;</br> import
- * static mh.database.MDT.gstCWord;</br> import static
- * mh.database.MDT.gstCTime;</br>
+* import static mh.database.MDT.*;</br>
+* import static mh.database.MDT.gConn;</br>
+* import static mh.database.MDT.gStat;</br>
+* import static mh.database.MDT.gsDbName;</br>
+* import static mh.database.MDT.gsTableFH;</br>
+* import static mh.database.MDT.gsCWord;</br>
+* import static mh.database.MDT.gsCTime;</br>
+* import static mh.database.MDT.gsTableEntry;</br>
+* import static mh.database.MDT.gsCTrans;</br>
+* import static mh.database.MDT.gsTableSenten;</br>
+* import static mh.database.MDT.gsCEn;</br>
+* import static mh.database.MDT.gsCn;</br>
+* import static mh.database.MDT.gsCUrl;</br>
+* import static mh.database.MDT.gsCVoiceByte;</br>
+* import static mh.database.MDT.gsTablePhon;</br>
+* import static mh.database.MDT.gsCPhon;</br>
+* import static mh.database.MDT.gsCountry;</br>
  **/
 public class MDT {
 	public static void main(String[] args) {
 		createTable();
-		T.print(EntryExists("book"));
+		T.print(EntryExists("zuo"));
+		Class<MDT> cMDT=MDT.class;
+		Field[] yf=cMDT.getDeclaredFields();
+
+		for (int i = 0; i < yf.length; i++) {
+			String str=yf[i].toString();
+			int ia=str.indexOf("mh.database");
+			str=QText.format("* import static %s;</br>", 
+					str.substring(ia,str.length()));
+			T.print(str);
+		}
+		//Entry.print(ae, astName)
+		//T.print(yf);
 	}
 /****************Test End************************/
 	public static Connection gConn;

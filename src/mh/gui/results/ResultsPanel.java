@@ -3,6 +3,8 @@ package mh.gui.results;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -78,7 +80,7 @@ public class ResultsPanel extends JPanel implements StopTask {
 				getRowAC()// AC rowConstraints
 				));
 		gPP = app;
-		gkSoft = new KingSoft(this, gFP);
+		gkSoft = new KingSoft(this);
 
 		add(gWP, gWP.gsC_migl);
 		add(gTP, gTP.gsC_migl);
@@ -95,13 +97,10 @@ public class ResultsPanel extends JPanel implements StopTask {
 	}
 
 	private void AddListener() {
-
+//		gWP.addKeyListener(gFP.gKeyTab);
+//		gWP.txtWord.addKeyListener(gFP.gKeyTab);
+//		gTP.gtxtArea.addKeyListener(gFP.gKeyTab);
 	}
-
-	// public void showWord(Word aword) {
-	// gWP.showWord(aword);
-	// }
-
 	public void showResults(final String astWord) {
 		stop();
 		gbNotStop = true;

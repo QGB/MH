@@ -122,6 +122,7 @@ public class WordPanel extends JPanel {
 	private void CreateComponents() {
 		txtWord = new JTextField();
 		txtWord.setFont(new Font(Font.DIALOG, Font.PLAIN, 30));
+		txtWord.setEditable(false);
 		gpsPanel=new JPanel(new GridLayout(1, 3));
 
 	}

@@ -50,8 +50,8 @@ public class KingSoft extends AbstractGetEntry {
 	}
 
 	/*********** Test End *********/
-	public KingSoft(ResultsPanel aRP, FindPanel aFP) {
-		super(aRP, aFP);
+	public KingSoft(ResultsPanel aRP) {
+		super(aRP);
 	}
 
 	public Entry byWord(String ast) {

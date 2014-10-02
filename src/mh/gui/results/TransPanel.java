@@ -31,6 +31,7 @@ public class TransPanel extends JScrollPane {
 		gtxtArea.setFont(new Font("标楷体", Font.BOLD, 22));
 		gtxtArea.setLineWrap(true);// 激活自动换行功能
 		gtxtArea.setWrapStyleWord(true);// 激活断行不断字功能
+		gtxtArea.setEditable(false);
 		//gtxtArea.setText(T.getSource(JTextArea2.class));
 		setViewportView(gtxtArea);
 	}

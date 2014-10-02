@@ -1,3 +1,18 @@
+//		KeyListener keyEnter=new KeyListener() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {}
+//			@Override
+//			public void keyReleased(KeyEvent e) {
+//
+//			}
+//			@Override
+//			public void keyPressed(KeyEvent e) {}
+//		}; 
+		//CBInput.getEditor().getEditorComponent().addKeyListener(keyEnter);
+		//CBInput.addKeyListener(keyEnter);
+		
+		
+		
 				Runnable run=new Runnable() {
 			public void run() {
 				//for (int i = 0; i <99; i++) {

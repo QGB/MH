@@ -18,21 +18,6 @@ import mh.struct.entry.Phon;
 
 public class GetPhonV implements QRunable{
 	public static void main(String[] args) {
-		T.getCurrentMethod()
-//		String stM=T.read_st("v/url.txt");
-//		Entry e=new Entry();
-//		e.word.ps.put(C.P, new Phon("buk",stM));
-//		//QRunable qr=new GetPhonV(e.word.ps.get(C.P).v,);
-//		Thread tpv=new Thread(qr);
-//		tpv.start();
-//		//T.sleep(123);
-//		//e.word.ps.get(C.P).v.stM.set("Modify!");
-//		T.sleep(233);
-//		qr.stop();
-//		if (qr.isDone()) {
-//			e.word.ps.get(C.P).v.play();
-//		}
-//		T.print(e.word.ps.get(C.P));
 	}
 	
 	ResultsPanel gRP;
@@ -43,7 +28,6 @@ public class GetPhonV implements QRunable{
 			T.argsError(av);
 		}
 		this.gv=av;
-		
 		gRP=arp;
 		gc=ac;
 		
@@ -51,6 +35,7 @@ public class GetPhonV implements QRunable{
 	
 	@Override
 	public void run() {
+		long lt=System.currentTimeMillis();
 		InputStream is=null;
 		try {
 			is=Get.urlfile(gv.stM.get());
@@ -61,6 +46,16 @@ public class GetPhonV implements QRunable{
 		}
 		if (gbNotStop) {
 			gv.set(is);
+			/**如果立即调用gSsP.addVoice，可能因为
+			 * gSsP.addSenten还未完成而抛出NullPointerException
+			 * 经过测试 500是一个能保证安全的较小值（代理环境）
+			 * 999 **/
+			lt=System.currentTimeMillis()-lt;
+			//T.print(lt);
+			if (lt<555) {
+				T.sleep(555-lt);
+			}
+			/***********************/
 			gRP.gWP.addVoice(gv,gc);
 			gRP.gPP.go(gv.stM.get());
 			gbIsDone=true;

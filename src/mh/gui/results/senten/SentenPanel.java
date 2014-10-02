@@ -80,7 +80,9 @@ public class SentenPanel extends JPanel implements GetSet<Senten> {
 
 	private void CreateComponents() {
 		txtEn =new JTextField(gs.ds.st1.get());
+		txtEn.setEditable(false);
 		txtCn =new JTextField(gs.ds.st2.get());
+		txtCn.setEditable(false);
 		gDsPanel=new JPanel(new GridLayout(2, 1));
 		gDsPanel.add(txtEn);
 		gDsPanel.add(txtCn);

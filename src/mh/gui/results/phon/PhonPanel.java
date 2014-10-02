@@ -95,6 +95,7 @@ public class PhonPanel extends JPanel implements GetSet<Phon> {
 
 	private void CreateComponents() {
 		txtPhon =new JTextField(gp.stP.get());
+		txtPhon.setEditable(false);
 		//btnBack.setEnabled(false);
 
 		btnVoice = new JButton();

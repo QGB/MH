@@ -15,12 +15,11 @@ import qgb.interfaces.QRunable;
 public abstract class AbstractGetEntry implements GetEntry {
 	protected int giRetry = 1;
 	protected ResultsPanel gRP;
-	protected FindPanel gFP;
-	public AbstractGetEntry(ResultsPanel aRP ,FindPanel aFP) {
-		this(3,aRP, aFP);
+	public AbstractGetEntry(ResultsPanel aRP) {
+		this(3,aRP);
 	}
 
-	public AbstractGetEntry(int aiRetry,ResultsPanel aRP ,FindPanel aFP)
+	public AbstractGetEntry(int aiRetry,ResultsPanel aRP)
 			throws IllegalArgumentException {
 		if (aiRetry < 1) {
 			throw new IllegalArgumentException(KingSoft.class.toString()
@@ -28,7 +27,6 @@ public abstract class AbstractGetEntry implements GetEntry {
 		}
 		giRetry = aiRetry;
 		gRP=aRP;
-		gFP=aFP;
 		//gpPanel = aPPanel;
 	}
 	
