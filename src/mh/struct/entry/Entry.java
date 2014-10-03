@@ -74,6 +74,10 @@ public class Entry extends Object {
 	public void print() {
 		print(this, "e");
 	}
+	
+	public void print(String ast) {
+		print(this, ast);
+	}
 	/** is print?**/
 	public static Boolean print(Object ae, String astName) {
 		Field[] yf = ae.getClass().getDeclaredFields();

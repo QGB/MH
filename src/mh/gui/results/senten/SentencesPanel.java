@@ -145,6 +145,7 @@ public class SentencesPanel extends JScrollPane {
 		});
 		giS++;
         if(as.v.notNull()){
+        	
         	addVoice(as.v, i);
         }
 		return i;
@@ -156,6 +157,7 @@ public class SentencesPanel extends JScrollPane {
 			T.argsError(av,ai);
 		}
 		//T.print(ai+",size:"+gSPs.size());
+		T.sleep(99);
 		gSPs.get(ai).addVoice(av);
 		if ((++giV)==giS) {
 			gbDone=true;

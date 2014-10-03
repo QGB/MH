@@ -47,30 +47,8 @@ import mh.struct.entry.Senten;
  **/
 public class MDT {
 	public static void main(String[] args) throws SQLException {
-		//createTable();
-//		String sql = QText
-//				.format("create table %s("
-//						+ "%s char(50),"
-//						+ "%s blob);",
-//						"BlobTest", gsCWord,gsCVoiceByte);
-//		gStat.executeUpdate(sql);
-//		PreparedStatement prep = gConn.prepareStatement(QText.format(
-//				"INSERT INTO %s(%s,%s) VALUES(?,?)", "BlobTest",
-//				gsCWord,gsCVoiceByte));
-//		prep.setString(1, System.currentTimeMillis()+"A");
-//		InputStream is=T.read_is("1.doc");
-//		prep.setBytes(2, T.InputStreamToBytes(is));
-//		prep.execute();
-		PreparedStatement prep = gConn.prepareStatement(QText.format(
-				"Select * From %s;", 
-				"BlobTest"));
-		ResultSet rs=prep.executeQuery();
-		while (rs.next()) {
-			T.print(rs.getString(1));
-			T.write("Blob",rs.getBytes(2));
-			T.msgbox();
-		}
-		gConn.commit();
+		createTable();
+
 		if (true) {
 			return;
 		}
@@ -145,7 +123,7 @@ public class MDT {
 	public static void save(Entry ae) {
 		if (ae == null || ae.word.stW.get() == "")
 			return;
-		ae.print();//test
+		//ae.print();//test
 		try {
 			PreparedStatement prep = gConn.prepareStatement(QText.format(
 					"INSERT INTO %s(%s,%s) VALUES(?,?)", gsTableEntry, 
@@ -163,7 +141,8 @@ public class MDT {
 				prep.setString(3, e.getKey().toString());
 				prep.setString(4, e.getValue().v.stM.get());
 				if(e.getValue().v.notNull()){
-					prep.setBlob(5, e.getValue().v.get());
+					prep.setBytes(5,
+							T.InputStreamToBytes(e.getValue().v.get()));
 				}
 				prep.execute();
 			}
@@ -177,7 +156,8 @@ public class MDT {
 				prep.setString(3, s.ds.st2.get());
 				prep.setString(4, s.v.stM.get());
 				if(s.v.notNull()){
-					prep.setBlob(5,s.v.get());
+					prep.setBytes(5,
+							T.InputStreamToBytes(s.v.get()));
 				}
 				prep.execute();
 			}

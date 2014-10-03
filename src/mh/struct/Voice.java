@@ -15,7 +15,7 @@ import test.t2;
 public class Voice implements NotNullObject<InputStream> {
 	/**string of voice URL**/
 	public final StrNotNull stM = new StrNotNull();
-	private byte[] bdata;
+	private volatile byte[] bdata;
 
 	public Voice() {
 		this("", null);

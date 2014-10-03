@@ -20,7 +20,7 @@ public class StrNotNull implements NotNullObject<String>,Serializable{
 		//T.print("[%s]%b",sn.get(),sn.get()==str);
 	}
 /****************End Test **************/
-	private String str;
+	private volatile String str;
 	
 	public StrNotNull() {}
 	

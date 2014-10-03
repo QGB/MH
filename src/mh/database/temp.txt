@@ -1,4 +1,29 @@
-				
+
+
+//		String sql = QText
+//				.format("create table %s("
+//						+ "%s char(50),"
+//						+ "%s blob);",
+//						"BlobTest", gsCWord,gsCVoiceByte);
+//		gStat.executeUpdate(sql);
+		PreparedStatement prep = gConn.prepareStatement(QText.format(
+				"INSERT INTO %s(%s,%s) VALUES(?,?)", "BlobTest",
+				gsCWord,gsCVoiceByte));
+		prep.setString(1, System.currentTimeMillis()+"A");
+		InputStream is=T.read_is("1.doc");
+		prep.setBinaryStream(2, is);
+		prep.execute();
+//		PreparedStatement prep = gConn.prepareStatement(QText.format(
+//				"Select * From %s;", 
+//				"BlobTest"));
+//		ResultSet rs=prep.executeQuery();
+//		while (rs.next()) {
+//			T.print(rs.getString(1));
+//			T.write("Blob",rs.getBytes(2));
+//			T.msgbox();
+//		}
+		gConn.commit();
+						
 				addVoice(e.getValue().v);
 
 	public static void addVoice(Voice av) {
