@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new MigLayout(R.MigL.sL_noBorder, "[grow]", "[]0[grow]0[]"));
 
-		final ProgressPanel jp_pp=new ProgressPanel(30);
+		final ProgressPanel jp_pp=new ProgressPanel(50);
 		final ResultsPanel jp_rp=new ResultsPanel(jp_pp);
 		final FindPanel jp_fp = new FindPanel(jp_rp);
 		jp_rp.setPanel(jp_fp);

@@ -31,7 +31,7 @@ public class TransPanel extends JScrollPane {
 		gtxtArea.setFont(new Font("标楷体", Font.BOLD, 22));
 		gtxtArea.setLineWrap(true);// 激活自动换行功能
 		gtxtArea.setWrapStyleWord(true);// 激活断行不断字功能
-		gtxtArea.setEditable(false);
+		//gtxtArea.setEditable(false);
 		//gtxtArea.setText(T.getSource(JTextArea2.class));
 		setViewportView(gtxtArea);
 	}
@@ -39,16 +39,20 @@ public class TransPanel extends JScrollPane {
 	 * 自动刷新。**/
 	@Override
 	public void removeAll() {
+		gtxtArea.setEditable(true);
 		gtxtArea.setText("");
+
 		QST.refreshAll(this);
 	}
 	/**不要求 在 EDT中调用**/
 	public void showTrans(final Translations ats){
+		gtxtArea.setEditable(true);
 		gtxtArea.setText(ats.toString());
 		//TODO: 不能完美显示滚动条
 		
 //		T.print(gtxtArea.getPreferredSize());[width=475,height=155]
 //		gtxtArea.setPreferredSize(new Dimension(1, 1));
+		gtxtArea.setEditable(false);
 		QST.refreshAll(this);
 	}
 	/************Test Code**********************/

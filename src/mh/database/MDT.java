@@ -4,6 +4,7 @@ import static mh.database.MDT.gStat;
 import static mh.database.MDT.gsCTime;
 
 import java.io.File;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,8 +46,34 @@ import mh.struct.entry.Senten;
 * import static mh.database.MDT.gsCountry;</br>
  **/
 public class MDT {
-	public static void main(String[] args) {
-		createTable();
+	public static void main(String[] args) throws SQLException {
+		//createTable();
+//		String sql = QText
+//				.format("create table %s("
+//						+ "%s char(50),"
+//						+ "%s blob);",
+//						"BlobTest", gsCWord,gsCVoiceByte);
+//		gStat.executeUpdate(sql);
+//		PreparedStatement prep = gConn.prepareStatement(QText.format(
+//				"INSERT INTO %s(%s,%s) VALUES(?,?)", "BlobTest",
+//				gsCWord,gsCVoiceByte));
+//		prep.setString(1, System.currentTimeMillis()+"A");
+//		InputStream is=T.read_is("1.doc");
+//		prep.setBytes(2, T.InputStreamToBytes(is));
+//		prep.execute();
+		PreparedStatement prep = gConn.prepareStatement(QText.format(
+				"Select * From %s;", 
+				"BlobTest"));
+		ResultSet rs=prep.executeQuery();
+		while (rs.next()) {
+			T.print(rs.getString(1));
+			T.write("Blob",rs.getBytes(2));
+			T.msgbox();
+		}
+		gConn.commit();
+		if (true) {
+			return;
+		}
 		T.print(EntryExists("zuo"));
 		Class<MDT> cMDT=MDT.class;
 		Field[] yf=cMDT.getDeclaredFields();
@@ -118,6 +145,7 @@ public class MDT {
 	public static void save(Entry ae) {
 		if (ae == null || ae.word.stW.get() == "")
 			return;
+		ae.print();//test
 		try {
 			PreparedStatement prep = gConn.prepareStatement(QText.format(
 					"INSERT INTO %s(%s,%s) VALUES(?,?)", gsTableEntry, 

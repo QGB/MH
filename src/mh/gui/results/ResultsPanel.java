@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import mh.database.MDT;
 import mh.gui.FindPanel;
 import mh.gui.MainFrame;
 import mh.gui.ProgressPanel;
@@ -119,6 +120,7 @@ public class ResultsPanel extends JPanel implements StopTask {
 
 				if (e != null && isStop() == false) {
 					gPP.showMsg("[" + e.word.stW.get() + "] done!");
+					MDT.save(e);
 					gbIsDone = true;
 				}
 				gFP.btnFind.setEnabled(true);

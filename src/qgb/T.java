@@ -470,7 +470,7 @@ public final class T {
 	/**
 	 * Automatic judgment on the file path
 	 * 
-	 * @see java.io.File
+	 * @see qgb.T.autoPath
 	 */
 	public static BufferedInputStream read_bis(String fileName) {
 		File file = new File(autoPath(fileName));
@@ -486,6 +486,22 @@ public final class T {
 		return bis;
 	}
 
+	/**2014-10-03 16:58:21
+	 * @see qgb.T.autoPath
+	 */
+	public static InputStream read_is(String fileName) {
+		File file = new File(autoPath(fileName));
+
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(file);
+			return fis;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static boolean isFullPath(String fileName) {
 		return (fileName.contains(":"));
 	}

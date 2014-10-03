@@ -2,6 +2,7 @@ package qgb.jdbc;
 
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import qgb.T;
@@ -29,11 +30,19 @@ public class QJDBT {
 	
 		}
 	}
-	public static void print(ResultSet ars) {
+	public static void print(ResultSet ars) throws SQLException {
 		T.print(ars.toString()+" Info:");
 		try {
 			T.print(".size=%d",ars.getFetchSize());
 		} catch (SQLException e) {e.printStackTrace();}
 		printType(ars);
+		ResultSetMetaData rsmData=ars.getMetaData();
+		
+		while (ars.next()) {
+			for (int i = 1; i <=rsmData.getColumnCount(); i++) {
+				System.out.print(ars.getString(i));
+			}
+			T.print("");
+		}
 	}
 }

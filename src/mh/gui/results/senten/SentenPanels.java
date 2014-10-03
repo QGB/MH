@@ -6,17 +6,17 @@ import qgb.T;
 import mh.struct.entry.Senten;
 /**具有缓存功能，能提供更高的效率？**/
 public class SentenPanels extends ArrayList<SentenPanel>{
-	private int gi=0;
+	private volatile int gi=0;
 //	@Override
 //	public boolean add(SentenPanel e) {
 //		return super.add(e);
 //	}
 	@Override
 	public void clear() {
+		gi=0;
 		for(SentenPanel sp:this){
 			sp.setVisible(false);
 		}
-		gi=0;
 	}
 	@Override
 	public int size() {

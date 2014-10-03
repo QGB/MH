@@ -22,6 +22,8 @@ import qgb.T;
 import qgb.interfaces.QRunable;
 import qgb.text.Regex;
 import test.thread.CallableDemo;
+import mh.database.DBEntry;
+import mh.database.MDT;
 import mh.gui.FindPanel;
 import mh.gui.MainFrame;
 import mh.gui.ProgressPanel;
@@ -50,14 +52,20 @@ public class KingSoft extends AbstractGetEntry {
 	}
 
 	/*********** Test End *********/
+	DBEntry gDbE;
 	public KingSoft(ResultsPanel aRP) {
 		super(aRP);
+		gDbE=new DBEntry(aRP);
 	}
-
+	
 	public Entry byWord(String ast) {
 		gbIsDone=false;gbNotStop=true;
 		if (ast == null || ast.length() < 2) {
 			gRP.showMsg("待查找单词不能为空！");
+			return null;
+		}
+		if (MDT.EntryExists(ast)) {
+			gDbE.byWord(ast);
 			return null;
 		}
 		// T.print("["+ast+"]");
@@ -180,7 +188,7 @@ public class KingSoft extends AbstractGetEntry {
 		// T.print(st_html);
 		gRP.gFP.addHistory(e.word.stW.get());
 		gbIsDone = true;
-
+		
 		return e;
 	}
 }

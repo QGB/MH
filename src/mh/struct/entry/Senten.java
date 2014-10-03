@@ -1,5 +1,6 @@
 package mh.struct.entry;
 
+import qgb.text.QText;
 import mh.struct.DoubleSt;
 import mh.struct.Voice;
 
@@ -21,6 +22,6 @@ public class Senten {
 	}
 	@Override
 	public String toString() {
-		return ds.toString();
+		return QText.format("v.notNull()[%s]%s", v.notNull(),ds.toString()) ;
 	}
 }
