@@ -21,7 +21,8 @@ public class DBEntry extends AbstractGetEntry{
 	public static void main(String[] args) {
 //		DBEntry dbE=new DBEntry(null);
 //		dbE.byWord("book");
-		MainFrame.main(null);
+		T.print(T.getSource(DBEntry.class));
+		//MainFrame.main(null);
 	}
 	public DBEntry(ResultsPanel aRP) {
 		super(1,aRP);

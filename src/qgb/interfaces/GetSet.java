@@ -1,11 +1,5 @@
-/**
- * 
- */
 package qgb.interfaces;
 
-import java.io.InputStream;
-
-import org.omg.CORBA.Object;
 
 /**
  * @author Administrator

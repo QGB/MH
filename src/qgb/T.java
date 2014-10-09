@@ -316,6 +316,7 @@ public final class T {
 
 	/**如果ast_filename以 .开头，则为当前路径
 	 * </p> modified at 2014-07-23 02:08:51 modified at 2014-07-31 03:00:19
+	 *  TODO:对mac os 绝对路径支持有问题
 	 **/
 	public static String autoPath(String ast_filename) {
 		if (ast_filename.startsWith(".")) {
@@ -687,11 +688,11 @@ public final class T {
 		}
 		return aib;
 	}
-	
+	/**支持mac os，windows**/
 	public static String getSource(Class<?> aClass) {
-		String stp=JTextArea2.class.getProtectionDomain().getCodeSource().getLocation().toString();
+		String stp=aClass.getProtectionDomain().getCodeSource().getLocation().toString();
 		if (stp.endsWith("/bin/")==false)return "Not Eclipse!";
-		stp=stp.substring(6, stp.length()-4)+"src/";
+		stp="./src/";
 		stp=stp+aClass.getName().replace('.','/')+".java";
 		//print(stp);
 		return T.read_st(stp);
