@@ -60,7 +60,7 @@ public class ResultsPanel extends JPanel implements StopTask {
 			}
 		}
 	};
-	/******************* Test End ***************************************************/
+	/******************* Test End ***********************/
 	ArrayList<JPanel> galPanels = new ArrayList<JPanel>();
 	public String gsC_migl = "growx,growy,wrap";
 	public ProgressPanel gPP;
@@ -76,8 +76,7 @@ public class ResultsPanel extends JPanel implements StopTask {
 		// "[]0[grow]0[grow]"));
 		super(new MigLayout(
 				ConstraintParser.parseLayoutConstraint(R.MigL.sL_noBorder),
-				ConstraintParser.parseColumnConstraints("[grow]"),// AC
-																	// colConstraints
+				ConstraintParser.parseColumnConstraints("[grow]"),// AC colConstraints
 				getRowAC()// AC rowConstraints
 				));
 		gPP = app;

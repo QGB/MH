@@ -46,13 +46,13 @@ public class TransPanel extends JScrollPane {
 	}
 	/**不要求 在 EDT中调用**/
 	public void showTrans(final Translations ats){
-		gtxtArea.setEditable(true);
+		//gtxtArea.setEditable(true);
 		gtxtArea.setText(ats.toString());
 		//TODO: 不能完美显示滚动条
 		
 //		T.print(gtxtArea.getPreferredSize());[width=475,height=155]
 //		gtxtArea.setPreferredSize(new Dimension(1, 1));
-		gtxtArea.setEditable(false);
+		//gtxtArea.setEditable(false);
 		QST.refreshAll(this);
 	}
 	/************Test Code**********************/

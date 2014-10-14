@@ -5,21 +5,22 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import mh.struct.StrNotNull;
 import qgb.CharsetName;
 import qgb.T;
 /**modified at 2014-09-22 21:21:51**/
 public class QText {
-	static int in = 0;
+	//static int in = 0;
 
 	public static void main(String[] args) throws IOException {
-		T.print("[%s]",lineWrap("0123456789Abcdefghijk",3));
-		//T.print(pad("123", 9, "AB"));
-		// T.print(used_chars(T.read_st("D:/jass.txt")));
-		// T.print(formatNum(1, "00"));
-		// String str ="1234";
-		// T.print(str.indexOf("2"));
+		//T.print("[%s]",lineWrap("0123456789Abcdefghijk",3));
+		//T.print("0!!!!34567!!!!!!89A2!!!".length());
+		String stW = "0!!!!34567!!!!!!89A2!!!!bcdefghijk!!";
+		stW=QText.delChars(stW,'|','`','~','!','@','#','$','%','^','&','*','(',')');
+		
+		T.print(stW);
 		// T.print(str.substring(0,str.indexOf("3") ));
 	}
 
@@ -135,5 +136,27 @@ public class QText {
 	}
 	public static String lineWrap(String ast,int aiColumns) {
 		return lineWrap(new StringBuilder(ast), aiColumns);
+	}
+
+	public static String delChars(String stW, char... ayc) {
+		if (ayc.length<1||stW.length()<1)return stW;
+		StringBuilder sb=new StringBuilder(stW);
+		//ArrayList<Integer> alRi=new ArrayList<Integer>();
+		int idc=0,imax= sb.length();
+//		T.print(sb.length());
+//		T.exit();
+		for (int i = 0; i <imax; i++) {
+			char c=sb.charAt(i-idc);
+			for (int j = 0; j < ayc.length; j++) {
+				//System.out.printf("%s%s|", c,ayc[j]);
+				if(c==ayc[j]){
+					sb.deleteCharAt(i-idc);
+					idc++;
+					break;
+				}
+			}
+			//T.print("-"+(i));
+		}
+		return sb.toString();
 	}
 }

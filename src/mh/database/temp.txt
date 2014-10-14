@@ -1,4 +1,43 @@
+			public static ResultSet get_RS() {
 
+		// 数据库连接
+		Connection gConn = null;
+		Statement st = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+
+			// 建立连接
+			gConn = DriverManager.getConnection("jdbc:sqlite:mh_t.db", "", "");
+			gConn.setAutoCommit(false);
+			st = gConn.createStatement();
+			ResultSet rs = st.executeQuery("Select * From ccsu");
+			return rs;
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				gConn.rollback();
+			} catch (Exception e2) {
+			}
+		}
+		return null;
+
+	}
+	
+		
+		//jp_rp.gTP.gtxtArea.addKeyListener(jp_fp.keyEnter);
+		//addKeyListener(jp_fp.keyEnter);
+		//jp_fp.addKeyListener(l);
+		
+//		QST.setAllBackground(jp_rp.gSsP, Color.BLUE);
+//		QST.setAllBackground(jp_rp.gTP,Color.BLACK);
+//		QST.setAllForeground(jp_rp.gTP, Color.GREEN);
+//		jp_rp.setBackground(Color.PINK);
+//		QST.setAllBackground(jp_pp, Color.GREEN);
+//
+//		getContentPane().setBackground(Color.RED.darker());
+//		JButton jb = new JButton(QST.getScaledIcon("res/find/back.png", 89, 89));
+//		getContentPane().add(jb, "h 99:99:99,w 533::");
+	
 
 //		String sql = QText
 //				.format("create table %s("

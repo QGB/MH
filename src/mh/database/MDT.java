@@ -1,10 +1,7 @@
 package mh.database;
 
-import static mh.database.MDT.gStat;
-import static mh.database.MDT.gsCTime;
 
 import java.io.File;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,14 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Map;
 
 import qgb.T;
-import qgb.swing.QST;
 import qgb.text.QText;
-import mh.struct.Sentences;
-import mh.struct.Voice;
 import mh.struct.entry.C;
 import mh.struct.entry.Entry;
 import mh.struct.entry.Phon;

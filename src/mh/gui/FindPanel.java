@@ -32,6 +32,7 @@ import mh.struct.entry.Word;
 import net.miginfocom.swing.MigLayout;
 import qgb.T;
 import qgb.swing.QST;
+import qgb.text.QText;
 
 /**
  * String colConstraints="[][grow][]"
@@ -153,6 +154,7 @@ public class FindPanel extends JPanel {
 
 	protected void find() {
 		String stW = CBInput.getEditor().getItem().toString().trim();
+		stW=QText.delChars(stW,'|','`','~','!','@','#','$','%','^','&','*','(',')');
 		// if (stW.length()>0) {throw new IllegalArgumentException("qgb!");}
 		// else {T.argsError(e);}
 		// T.print("s=%s,id=%s,c=%s\ntos=%s","",e.getID(),e.getActionCommand(),e.toString());
