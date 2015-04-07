@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="D:/java/lib/MH/jl1.0.1.jar" sourcepath="E:/SourceCode/JAVA/JLayer1.0.1/src">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="D:/java/lib/MH/sqlite3java/lib/sqlitejdbc.jar" sourcepath="D:/java/lib/MH/sqlite3java/libsrc"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="D:/java/lib/MH/jsoup-1.7.3.jar" sourcepath="E:/SourceCode/JAVA/jsoup-1.7.3-sources.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="D:/java/lib/MH/miglayout15-swing.jar" sourcepath="E:/SourceCode/JAVA/LIB/miglayout-src.zip">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="E:/SourceCode/JAVA/laf/weblaf-demo-1.28.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

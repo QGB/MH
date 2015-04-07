@@ -1,0 +1,123 @@
+		//int ixm=asX.length,iym=asY.length;
+		//int[][] yi=new int[ixm+1][iym+1];
+		//T.print("i=%d,j=%d",i+1,j+1);
+		//EvoDisFrame.EDframe.setCoordinate(i+1,j+1, ++gin);
+		//T.msgbox();
+
+			public static ResultSet get_RS() {
+
+		// 数据库连接
+		Connection gConn = null;
+		Statement st = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+
+			// 建立连接
+			gConn = DriverManager.getConnection("jdbc:sqlite:mh_t.db", "", "");
+			gConn.setAutoCommit(false);
+			st = gConn.createStatement();
+			ResultSet rs = st.executeQuery("Select * From ccsu");
+			return rs;
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				gConn.rollback();
+			} catch (Exception e2) {
+			}
+		}
+		return null;
+
+	}
+	
+		
+		//jp_rp.gTP.gtxtArea.addKeyListener(jp_fp.keyEnter);
+		//addKeyListener(jp_fp.keyEnter);
+		//jp_fp.addKeyListener(l);
+		
+//		QST.setAllBackground(jp_rp.gSsP, Color.BLUE);
+//		QST.setAllBackground(jp_rp.gTP,Color.BLACK);
+//		QST.setAllForeground(jp_rp.gTP, Color.GREEN);
+//		jp_rp.setBackground(Color.PINK);
+//		QST.setAllBackground(jp_pp, Color.GREEN);
+//
+//		getContentPane().setBackground(Color.RED.darker());
+//		JButton jb = new JButton(QST.getScaledIcon("res/find/back.png", 89, 89));
+//		getContentPane().add(jb, "h 99:99:99,w 533::");
+	
+
+//		String sql = QText
+//				.format("create table %s("
+//						+ "%s char(50),"
+//						+ "%s blob);",
+//						"BlobTest", gsCWord,gsCVoiceByte);
+//		gStat.executeUpdate(sql);
+		PreparedStatement prep = gConn.prepareStatement(QText.format(
+				"INSERT INTO %s(%s,%s) VALUES(?,?)", "BlobTest",
+				gsCWord,gsCVoiceByte));
+		prep.setString(1, System.currentTimeMillis()+"A");
+		InputStream is=T.read_is("1.doc");
+		prep.setBinaryStream(2, is);
+		prep.execute();
+//		PreparedStatement prep = gConn.prepareStatement(QText.format(
+//				"Select * From %s;", 
+//				"BlobTest"));
+//		ResultSet rs=prep.executeQuery();
+//		while (rs.next()) {
+//			T.print(rs.getString(1));
+//			T.write("Blob",rs.getBytes(2));
+//			T.msgbox();
+//		}
+		gConn.commit();
+						
+				addVoice(e.getValue().v);
+
+	public static void addVoice(Voice av) {
+		if (av == null || av.notNull()==false)
+			return;
+		try {
+			PreparedStatement prep = gConn.prepareStatement(QText.format(
+							"UPDATE %s(%s,%s) VALUES(?,?)", gsTablePhon,
+							gsCWord, gsCPhon,gsCountry));
+					prep.setString(1, ae.word.stW.get());
+					prep.setString(2, e.getValue().stP.get());
+					prep.setString(3, e.getKey().toString());
+					prep.execute();
+			gConn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+//			
+//			ResultSet rs=null;
+//			// gst.executeQuery("show tables;");
+//
+//
+////			 for (int i = 0; i <99; i++) {
+////				 T.sleep(1);
+////				 gst.executeUpdate(
+////						 "INSERT INTO History(stWord,stTime) VALUES('PX0','"+
+////				 System.currentTimeMillis()+ "')" );
+////			}
+//			//T.print(rs);
+//			rs= gst.executeQuery("Select * From History");
+//			//T.print(rs.getString(1));
+//			int i=0;
+//			while (rs.next()) {
+//				 T.print((++i)+"["+rs.getString(1)+"],["+rs.getString(2)+"]");
+//			
+//			 }
+//			 gConn.commit();
+
+		//connect();
+		
+//		for (int i = 0; i < 9; i++) {
+//			addWord("AAA");
+//		}
+//		
+//		int i=0;
+//		for(String st:getLastWord(99)){
+//			T.print("%-2d|%s",(++i),st);
+//		}
+		//dropTable();
+		//createTable();
