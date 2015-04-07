@@ -99,11 +99,11 @@ public class QText {
 
 		return (aBePaded.toString() + repeat(ia, " "));
 	}
-	/**锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟皆斤拷锟斤拷斐�*/
+	/**�����������Խ���쳣**/
 	public static String getBegins(String ast, int ai) {
 		return (String) ast.subSequence(0, T.min(ast.length(),ai));
 	}
-	/**锟斤拷锟斤拷锟节诧拷锟斤拷SQL锟斤拷洌�
+	/**�����ڲ���SQL��䣻
 	 * 2014-09-21 00:03:01**/
 	public static String format(String format, Object... args) {
 		ByteArrayOutputStream byos=new ByteArrayOutputStream();
@@ -129,7 +129,7 @@ public class QText {
 		//if(ir>0)asb.insert(ic,'\n');
 		return asb.toString();
 	}
-	/**eclipse锟斤拷锟斤拷台锟斤拷锟�6锟斤拷锟斤拷通锟斤拷,96锟斤拷全锟斤拷锟斤拷**/
+	/**eclipse����̨���76����ͨ��,96��ȫ����**/
 	public static String lineWrap(String ast,int aiColumns) {
 		return lineWrap(new StringBuilder(ast), aiColumns);
 	}
@@ -151,10 +151,10 @@ public class QText {
 		return sb.toString();
 	}
 
-	/**锟捷癸拷锟芥换锟斤拷直锟斤拷锟斤拷锟斤拷锟斤拷 astOld</br>
+	/**�ݹ��滻��ֱ�������� astOld</br>
 	 * **/
 	public static String replaceAll(String ast, String astOld, String astNew) {
-		/**锟斤拷astNew 锟叫帮拷 astOld时,锟斤拷锟斤拷锟斤拷锟斤拷锟捷归。锟斤拷锟皆凤拷锟斤拷 锟芥换一锟轿猴拷锟街碉拷锟�*/
+		/**��astNew �а� astOldʱ,���������ݹ顣���Է��� �滻һ�κ��ֵ��*/
 		if (astNew.contains(astOld)) {
 			return ast.replace(astOld, astNew);
 		}

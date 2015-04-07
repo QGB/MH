@@ -1,3 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=970cd766dbe9759f73e8226ba999aac5b93d79bd
 eclipse.preferences.version=1
 encoding//src/A.java=UTF-8
+encoding//src/mh/database/FindHistory.java=UTF-8
+encoding//src/qgb/jdbc/SQLite.java=UTF-8
 encoding//src/qgb/text/QText.java=UTF-8
+encoding/src=UTF-8
